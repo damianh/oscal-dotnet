@@ -117,7 +117,7 @@ dotnet run build.cs -- test            # run tests only
 
 ```bash
 dotnet run build.cs -- update-oscal 1.2.0   # fetch specific version
-dotnet run build.cs -- update-oscal all      # fetch all versions
+dotnet run build.cs -- update-oscal all     # fetch all versions
 ```
 
 ## References
