@@ -1,6 +1,17 @@
 # oscal-dotnet
 
+[![CI](https://github.com/damianh/oscal-dotnet/actions/workflows/ci.yml/badge.svg)](https://github.com/damianh/oscal-dotnet/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![.NET](https://img.shields.io/badge/.NET-10.0-purple.svg)](https://dotnet.microsoft.com/)
+[![GitHub Stars](https://img.shields.io/github/stars/damianh/oscal-dotnet.svg)](https://github.com/damianh/oscal-dotnet/stargazers)
+
 Strongly-typed C# models for [OSCAL](https://pages.nist.gov/OSCAL/) (Open Security Controls Assessment Language), generated from [NIST Metaschema](https://pages.nist.gov/metaschema/) definitions.
+
+## Packages
+
+| Package | Description | NuGet | Downloads |
+|---------|-------------|-------|-----------|
+| **DamianH.Oscal** | Strongly-typed C# models for OSCAL generated from NIST Metaschema definitions | [![NuGet](https://img.shields.io/nuget/v/DamianH.Oscal.svg)](https://www.nuget.org/packages/DamianH.Oscal/) | [![Downloads](https://img.shields.io/nuget/dt/DamianH.Oscal.svg)](https://www.nuget.org/packages/DamianH.Oscal/) |
 
 ## Features
 
