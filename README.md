@@ -105,25 +105,6 @@ JSON serialization uses `System.Text.Json` source generation with kebab-case nam
 public partial class V1_2_0JsonContext : JsonSerializerContext { }
 ```
 
-## Project Structure
-
-```
-oscal-dotnet/
-├── src/Oscal/                        # Main library (DamianH.Oscal)
-│   ├── V1_2_0/Generated/            # 134 generated types for OSCAL v1.2.0
-│   └── Oscal.csproj
-├── test/Oscal.Tests/                 # Smoke tests (xUnit v3)
-├── samples/
-│   ├── Oscal.Dynamic.LoadCatalog/    # Load & navigate OSCAL catalogs
-│   ├── Oscal.Dynamic.ValidateContent/# Validate against constraints
-│   ├── Oscal.Dynamic.MetapathQuery/  # Query with Metapath expressions
-│   ├── Oscal.Dynamic.ConvertFormat/  # Convert between JSON/XML/YAML
-│   └── Oscal.Dynamic.GenerateSchema/ # Generate JSON Schema & XSD
-├── reference/oscal/                  # NIST metaschema definitions (v1.0.0–v1.2.0)
-├── build.cs                          # Build script (Bullseye + SimpleExec)
-└── Directory.Build.props             # Shared build configuration
-```
-
 ## Building
 
 ```bash
