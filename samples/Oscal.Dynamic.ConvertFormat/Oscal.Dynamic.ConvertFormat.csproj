@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Description>Demonstrates converting OSCAL documents between JSON, XML, and YAML formats.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DamianH.Metaschema" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\reference\oscal\v1.2.0\oscal_profile_metaschema.xml" Link="Metaschema\%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\reference\oscal\v1.2.0\oscal_catalog_metaschema.xml" Link="Metaschema\%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\reference\oscal\v1.2.0\oscal_control-common_metaschema.xml" Link="Metaschema\%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\reference\oscal\v1.2.0\oscal_metadata_metaschema.xml" Link="Metaschema\%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\reference\oscal\v1.2.0\oscal_complete_metaschema.xml" Link="Metaschema\%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\oscal-content\NIST_SP-800-53_rev5_LOW-baseline_profile.json" Link="Content\%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

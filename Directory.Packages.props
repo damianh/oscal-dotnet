@@ -1,0 +1,16 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup Label="Production Dependencies">
+    <PackageVersion Include="BullsEye" Version="6.1.0" />
+    <PackageVersion Include="DamianH.Metaschema" Version="0.1.0" />
+    <PackageVersion Include="MinVer" Version="7.0.0" />
+    <PackageVersion Include="SimpleExec" Version="13.0.0" />
+  </ItemGroup>
+  <ItemGroup Label="Test Dependencies">
+    <PackageVersion Include="xunit.v3.core.mtp-v2" Version="3.2.2" />
+    <PackageVersion Include="xunit.v3.extensibility.core" Version="3.2.2" />
+    <PackageVersion Include="Shouldly" Version="4.3.0" />
+  </ItemGroup>
+</Project>

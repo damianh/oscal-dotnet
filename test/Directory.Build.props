@@ -1,0 +1,21 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Suppress CA1707: Identifiers should not contain underscores -->
+    <!-- Test method naming convention uses underscores for readability -->
+    <NoWarn>$(NoWarn);CA1707</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3.core.mtp-v2" />
+    <PackageReference Include="Shouldly" />
+  </ItemGroup>
+
+</Project>

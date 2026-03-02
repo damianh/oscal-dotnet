@@ -1,0 +1,14 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+  
+  <PropertyGroup>
+    <!-- MinVer Configuration: Start versioning at 0.1.0 -->
+    <MinVerMinimumMajorMinor>0.1</MinVerMinimumMajorMinor>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- MinVer package reference for all src projects -->
+    <PackageReference Include="MinVer" PrivateAssets="all" />
+  </ItemGroup>
+</Project>

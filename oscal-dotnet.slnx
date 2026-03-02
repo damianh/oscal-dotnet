@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="build.cs" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Oscal/Oscal.csproj" />
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/Oscal.Tests/Oscal.Tests.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/Oscal.Dynamic.LoadCatalog/Oscal.Dynamic.LoadCatalog.csproj" />
+    <Project Path="samples/Oscal.Dynamic.ValidateContent/Oscal.Dynamic.ValidateContent.csproj" />
+    <Project Path="samples/Oscal.Dynamic.MetapathQuery/Oscal.Dynamic.MetapathQuery.csproj" />
+    <Project Path="samples/Oscal.Dynamic.ConvertFormat/Oscal.Dynamic.ConvertFormat.csproj" />
+    <Project Path="samples/Oscal.Dynamic.GenerateSchema/Oscal.Dynamic.GenerateSchema.csproj" />
+  </Folder>
+</Solution>

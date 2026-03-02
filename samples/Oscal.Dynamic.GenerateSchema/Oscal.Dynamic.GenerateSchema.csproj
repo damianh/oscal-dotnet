@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Description>Demonstrates generating JSON Schema and XSD from OSCAL Metaschema modules.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DamianH.Metaschema" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\reference\oscal\v1.2.0\*.xml" Link="Metaschema\%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

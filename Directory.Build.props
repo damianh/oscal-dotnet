@@ -1,0 +1,30 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591;CS1587</NoWarn>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Damian Hickey</Authors>
+    <Company>Damian Hickey</Company>
+    <Copyright>Copyright (c) 2026 Damian Hickey</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/damianh/oscal-dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/damianh/oscal-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageId>DamianH.$(MSBuildProjectName)</PackageId>
+    <AssemblyName>DamianH.$(MSBuildProjectName)</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+</Project>

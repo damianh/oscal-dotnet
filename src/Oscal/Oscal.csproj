@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <Description>OSCAL (Open Security Controls Assessment Language) library with versioned type-safe C# models generated from NIST Metaschema definitions.</Description>
+    <IsPackable>true</IsPackable>
+    <PackageTags>oscal;nist;security;compliance;metaschema;sbom;ssp;poam</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <ImplicitUsings>true</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

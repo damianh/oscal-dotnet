@@ -1,0 +1,96 @@
+name: release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number (x.y.z or x.y.z-prerelease.1)'
+        required: true
+        type: string
+      push_to_nuget:
+        description: 'Push to NuGet.org'
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: nuget.org
+    permissions:
+      contents: write
+      packages: write
+    env:
+      VERSION: ${{ inputs.version }}
+
+    steps:
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@3951f0dfe7a07e2313ec93c75700083e2005cbab # v4.3.0
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Validate version format
+      run: |
+        if ! echo "$VERSION" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9]+(\.[0-9]+)?)?$'; then
+          echo "::error::Invalid version format '$VERSION'. Expected: x.y.z or x.y.z-prerelease.1"
+          exit 1
+        fi
+
+    - name: Check tag does not already exist
+      run: |
+        TAG="v$VERSION"
+        if git rev-parse "$TAG" >/dev/null 2>&1; then
+          echo "::error::Tag $TAG already exists. Choose a different version or manually delete the existing tag and release first."
+          exit 1
+        fi
+
+    - name: Create and push tag
+      run: |
+        TAG="v$VERSION"
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git tag -a "$TAG" -m "Release $VERSION"
+        git push origin "$TAG"
+
+    - name: Restore dependencies
+      run: dotnet restore oscal-dotnet.slnx
+
+    - name: Build
+      run: dotnet build oscal-dotnet.slnx --configuration Release --no-restore
+
+    - name: Run tests
+      run: |
+        dotnet run --project test/Oscal.Tests/Oscal.Tests.csproj --no-build --configuration Release
+
+    - name: Pack NuGet packages
+      run: dotnet pack oscal-dotnet.slnx --configuration Release --no-build --output ./packages
+
+    - name: Push to GitHub Packages
+      run: |
+        # || true suppresses duplicate source registration errors on re-runs
+        dotnet nuget add source --username ${{ github.repository_owner }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" || true
+        dotnet nuget push "./packages/*.nupkg" --source "github" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+
+    - name: Push to NuGet.org
+      if: ${{ inputs.push_to_nuget }}
+      run: |
+        dotnet nuget push "./packages/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_ORG_APIKEY }} --skip-duplicate
+
+    - name: Upload packages as artifacts
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      with:
+        name: nuget-packages-${{ inputs.version }}
+        path: ./packages/*.nupkg
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
+      with:
+        tag_name: v${{ inputs.version }}
+        name: Release ${{ inputs.version }}
+        draft: false
+        prerelease: ${{ contains(inputs.version, '-') }}
+        generate_release_notes: true
